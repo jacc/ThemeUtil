@@ -1,1 +1,7 @@
-Package: a
+Package: design.luminant.lightstacks
+Name: LightStacks
+Version: 1.0
+Section: Tweaks
+Architecture: iphoneos-arm
+Description: A darker outlook on your icons.
+Author: Luminant Design
