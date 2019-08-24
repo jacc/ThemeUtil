@@ -98,8 +98,9 @@ def replace_line(file_name, line_num, text):
     out.close()
 
 
-
 def runMenu():
+    if os.name == 'nt':
+        print('\n[!!] This program is designed for Unix-based systems. Please use at your own risk on Windows.')
     print('\nThemeUtil Menu [internal testing v1]')
     print('[!] ThemeUtil should be run inside of the theme folder / inside the folder where the theme will be built. If not, many functions of the tool will fail.')
     print('Welcome back. What tasks would you like to run?')
