@@ -19,7 +19,7 @@ def fileChecks():
             runMenu()
 
     else:
-        create_prompt = input('[TU] Your DEBIAN and control file both do not exist. Would you like to create them now? (y/n) ')
+        create_prompt = input('[TU] Your DEBIAN folder and control file both do not exist. Would you like to create them now? (y/n) ')
         
         if create_prompt == "y":
             os.makedirs(os.path.dirname("./DEBIAN/"))
@@ -32,13 +32,13 @@ def fileChecks():
 def buildControl(control_path):
     with open(control_path, 'w') as control_file:
         
-        theme_id = input('[TU] Theme bundle ID: ')
-        theme_name = input('[TU] Theme name: ')
-        theme_version = input('[TU] Theme version: ')
+        theme_name = input('[TU] What is the name of the theme? ')
+        theme_id = input('[TU] What will the bundle ID of the theme be? ')
+        theme_desc = input('[TU] Your theme\'s description: ')
+        theme_version = "1.0.0"
         theme_section = "Themes"
         theme_arch = "iphoneos-arm"
-        theme_desc = input('[TU] Theme description: ')
-        theme_author = input('[TU] Theme author(s): ')
+        theme_author = input('[TU] What is your name? (will be put as theme author) ')
 
         control_file.write('Package: {}\n'.format(theme_id))
         control_file.write('Name: {}\n'.format(theme_name))
@@ -72,6 +72,21 @@ def overrideControl(control_path):
             print('[←] Returning to main menu.\n')
             runMenu()
 
+def themeCreator():
+
+    print('\nThemeUtil Theme Creator Tool\n')
+    print('The tool will now ask a few questions so it can accurately create your theme directory.\n')
+
+    fileChecks()
+    print('[TU] Your DEBIAN folder and control file were both successfully created.')
+    promptTool = input('[TU] Would you now like the tool to create the rest of the theme folder hierarchy? (y/n) ')
+
+    if promptTool == "y":
+        print('[TU] Creating ')
+    else:
+        print('[←] Aborting and returning to main menu.\n')
+        runMenu()
+
 
 # thanks stack overflow <3
 def replace_line(file_name, line_num, text):
@@ -82,23 +97,24 @@ def replace_line(file_name, line_num, text):
     print('[TU] Line successfully overwritten.')
     out.close()
 
+
+
 def runMenu():
-    print('ThemeUtil Menu [internal testing v1]')
+    print('\nThemeUtil Menu [internal testing v1]')
+    print('[!] ThemeUtil should be run inside of the theme folder / inside the folder where the theme will be built. If not, many functions of the tool will fail.')
     print('Welcome back. What tasks would you like to run?')
-    select = input('[1] Run file checks\n[2] Edit control file\n[3] Build new theme hierarchy\n[4] Quick-compile existing theme\n[5] Project information\n\n[!] Select 1-5: ')
+    select = input('[1] Create new theme\n[2] Edit existing theme control file\n[3] Run file checks\n[4] Quick-compile existing theme\n[5] Project information\n\n[!] Select 1-5: ')
     
     if select == "1":
-        fileChecks()
+        themeCreator()
     elif select == "2":
         overrideControl('./DEBIAN/control')
     elif select == "3":
-        print('[!] Not yet programmed.')
+        fileChecks()
     elif select == "4":
         print('[!] Not yet programmed.')
     elif select == "5":
         print('[!!] Jack is lazy and doesn\'t want to write this :(\n')
         runMenu()
-
-
 
 runMenu()

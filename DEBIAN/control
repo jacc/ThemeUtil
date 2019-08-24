@@ -1,7 +1,7 @@
-Package: design.luminant.lightstacks
-Name: LightStacks
-Version: 1.0
-Section: Tweaks
+Package: com.a.a
+Name: darkstacks2
+Version: 1.0.0
+Section: Themes
 Architecture: iphoneos-arm
-Description: A darker outlook on your icons.
-Author: Luminant Design
+Description: a
+Author: jacc
