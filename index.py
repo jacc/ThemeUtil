@@ -72,6 +72,9 @@ def overrideControl(control_path):
             print('[←] Returning to main menu.\n')
             runMenu()
 
+# themeCreator kinda boofed until I eventually make ThemeUtil not dependant inside the theme folder
+
+
 def themeCreator():
 
     print('\nThemeUtil Theme Creator Tool\n')
@@ -82,7 +85,8 @@ def themeCreator():
     promptTool = input('[TU] Would you now like the tool to create the rest of the theme folder hierarchy? (y/n) ')
 
     if promptTool == "y":
-        print('[TU] Creating ')
+        folderName = input('[TU] What should the folder be named?')
+        print('[TU] Creating file hierarchy. Please wait.')
     else:
         print('[←] Aborting and returning to main menu.\n')
         runMenu()
